@@ -21,7 +21,6 @@ func NewBSpline(pnts [][]float64, order int) (*bspline, error) {
 
 	// 2*order + (len(pnts) - order) num elements
 	//knts := make([]float64, len(pnts) + order)
-
 	knts := make([]float64, 0, len(pnts)+order)
 
 	// append start knts
@@ -40,8 +39,8 @@ func NewBSpline(pnts [][]float64, order int) (*bspline, error) {
 		knts = append(knts, 1.0)
 	}
 
-	fmt.Printf("knts: %v\n", knts)
-	fmt.Println("size: ", len(knts), " cap: ", cap(knts))
+	// fmt.Printf("knts: %v\n", knts)
+	// fmt.Println("size: ", len(knts), " cap: ", cap(knts))
 
 	b, err := bs.Create(knts, order)
 	if err != nil {
