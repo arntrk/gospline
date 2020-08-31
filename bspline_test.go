@@ -29,8 +29,4 @@ func TestBSpline(t *testing.T) {
 		fmt.Printf("p := %v at t: %f\n", p, tt)
 		tt += 0.1
 	}
-
-	if err == nil {
-		t.Errorf("Error: %v", err)
-	}
 }
