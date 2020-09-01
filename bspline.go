@@ -6,14 +6,14 @@ import (
 	bs "github.com/arntrk/gobasis"
 )
 
-type bspline struct {
+type BSpline struct {
 	pnts [][]float64
 
 	basis *bs.BSplineBasis
 }
 
 // NewBSpline create new BSplineCurve
-func NewBSpline(pnts [][]float64, order int) (*bspline, error) {
+func NewBSpline(pnts [][]float64, order int) (*BSpline, error) {
 
 	if len(pnts) < order {
 		return nil, fmt.Errorf("Minimum number of points must match the order (%d >= %d)", len(pnts), order)
@@ -47,10 +47,10 @@ func NewBSpline(pnts [][]float64, order int) (*bspline, error) {
 		return nil, err
 	}
 
-	return &bspline{pnts: pnts, basis: b}, nil
+	return &BSpline{pnts: pnts, basis: b}, nil
 }
 
-func (bs *bspline) Eval(t float64) []float64 {
+func (bs *BSpline) Eval(t float64) []float64 {
 
 	i, knts := bs.basis.Eval(t)
 	res := make([]float64, len(bs.pnts[0]))
@@ -64,7 +64,42 @@ func (bs *bspline) Eval(t float64) []float64 {
 	return res
 }
 
-func (bs *bspline) Interval() (float64, float64) {
+// Interval bla bla
+func (bs *BSpline) Interval() (float64, float64) {
 
 	return bs.basis.Interval()
+}
+
+// Derivate bla bla
+func (bs *BSpline) Derivate() *BSpline {
+
+	basis := bs.basis.Derivate()
+
+	if basis != nil {
+
+		pnts := make([][]float64, len(bs.pnts)-1)
+		// pnt := make([]float64, len(bs.pnts[0]))
+
+		fmt.Println("len pnts: ", len(pnts))
+		fmt.Println("len bs.pnts: ", len(bs.pnts))
+
+		for i := 0; i < len(pnts); i++ {
+			pnts[i] = make([]float64, len(bs.pnts[i]))
+
+			p := bs.basis.Order() - 1
+			k := float64(p) / (bs.basis.Knot(i+p+1) - bs.basis.Knot(i+1))
+
+			// assumes 3d coordinates for now
+			pnts[i][0] = k * (bs.pnts[i+1][0] - bs.pnts[i][0])
+			pnts[i][1] = k * (bs.pnts[i+1][1] - bs.pnts[i][1])
+			pnts[i][2] = k * (bs.pnts[i+1][2] - bs.pnts[i][2])
+
+		}
+
+		b := &BSpline{basis: basis, pnts: pnts}
+
+		return b
+	}
+
+	return nil
 }

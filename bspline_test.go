@@ -30,3 +30,22 @@ func TestBSpline(t *testing.T) {
 		tt += 0.1
 	}
 }
+
+func TestDerivate(t *testing.T) {
+	pnts := [][]float64{
+		{0.0, 100.0, -1000.0},
+		{75.0, 200.0, -750.0},
+		{-75.0, 150.0, -500.0},
+		{40.0, 75.0, -100.0},
+		{-40.0, 30.0, -50.0},
+		{5.0, 30.0, 20.0},
+	}
+
+	spline, _ := NewBSpline(pnts, 4)
+
+	spline2 := spline.Derivate()
+
+	if spline2 == nil {
+		t.Errorf("Error: %v", spline2)
+	}
+}
