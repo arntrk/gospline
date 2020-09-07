@@ -78,10 +78,6 @@ func (bs *BSpline) Derivate() *BSpline {
 	if basis != nil {
 
 		pnts := make([][]float64, len(bs.pnts)-1)
-		// pnt := make([]float64, len(bs.pnts[0]))
-
-		fmt.Println("len pnts: ", len(pnts))
-		fmt.Println("len bs.pnts: ", len(bs.pnts))
 
 		for i := 0; i < len(pnts); i++ {
 			pnts[i] = make([]float64, len(bs.pnts[i]))
