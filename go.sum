@@ -1,4 +1,2 @@
-github.com/arntrk/gobasis v0.0.0-20200901123451-eeb685cb7da4 h1:zHgLEa7TVMJtmlVHO/q3w3fmKBZW1uBLirQH4IFSM2o=
-github.com/arntrk/gobasis v0.0.0-20200901123451-eeb685cb7da4/go.mod h1:i8LYvFVUcQRYh2qjNy1j/N+CO2ak3zfQnEKb63f+26w=
-github.com/arntrk/gobasis v0.0.0-20200901125431-71d36b6d710e h1:mYrFF4dreHVWaVqPGg0BBvrfJUdNHGjfenS90s7PFUY=
-github.com/arntrk/gobasis v0.0.0-20200901125431-71d36b6d710e/go.mod h1:i8LYvFVUcQRYh2qjNy1j/N+CO2ak3zfQnEKb63f+26w=
+github.com/arntrk/gobasis v0.0.1 h1:SUL6ltvgDrA/0h6LD5SPL2tII3/1e3daR3QpiI6/9x4=
+github.com/arntrk/gobasis v0.0.1/go.mod h1:i8LYvFVUcQRYh2qjNy1j/N+CO2ak3zfQnEKb63f+26w=
